@@ -1,0 +1,83 @@
+<!--Costruire una pagina html con l'elenco dei partecipanti ad una fiera. In fase di esecuzione prevedere 
+    l'inserimento di : il numero dei partecipanti, I nominativi e la loro età. Al termine dell'inserimento il software
+    deve dare la possibilità di calcolare:l'età media, il numero dei minorenni ed il numero degli ultra sessantacinquenni.
+    Effettuare il controllo input.-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Esercizio 1 con parametri</title>
+    <script type="text/Javascript">
+        //funzione input
+        function Input()
+        {
+            var dimensione=document.forms["strumenti"]["txtquanti"].value;
+            for(i=0; i<dimensione; i++)
+            {
+                testo=" Nome del " + (i+1) + "* partecipante";
+                var formNumeri=document.getElementById("numeri");
+                var elemA=document.createElement("A");
+                var elemB=document.createTextNode(testo);
+                var elemC=document.createElement("INPUT");
+                formNumeri.appendChild(elemA);
+                elemA.appendChild(elemB);
+                elemA.appendChild(elemC);
+                elemC.type="text";
+                testo=" Eta del " + (i+1) + "* partecipante ";
+                var formNumeri=document.getElementById("numeri");
+                var elemP=document.createElement("P");
+                var elemT=document.createTextNode(testo);
+                var elemI=document.createElement("INPUT");
+                formNumeri.appendChild(elemP);
+                elemP.appendChild(elemT);
+                elemP.appendChild(elemI);
+                elemI.type="text";
+                elemI.name="txteta"+i;
+            }
+        }
+        //funzione calcola
+        function calcola()
+        {
+            var elencoEtapart= new Array();
+            var dimensione=document.forms["strumenti"]["txtquanti"].value;
+            var somma=0;
+            var minorenni=0;
+            var over65=0;
+            for(i=0; i<dimensione; i++)
+            {
+                elencoEtapart[i]=parseInt(document.forms["numeri"]["txteta"+i].value);
+                somma+=parseInt(elencoEtapart[i]);
+                if(isNaN(elencoEtapart[i]))
+                {
+                    elencoEtapart[i] = 0;
+                    alert("Errore non sono stati inseriti tutti i valori");
+                }
+                if(elencoEtapart[i]<18)
+                {
+                    minorenni++;
+
+                }       
+                if(elencoEtapart[i]>65)
+                {
+                    over65++;
+                } 
+            } 
+            var media = somma/dimensione;         
+            document.write("<p>La media è: " + media + "</p>");
+            document.write("<p>I minorenni sono: " + minorenni +"</p>");
+            document.write("<p>Gli over 65 sono: " + over65 + "</p>");
+        }
+    </script>
+</head>
+<body>
+    <form id="strumenti">
+        Inserisci il numero dei partecipanti <input type="text" name="txtquanti">
+        <input type="button" value="AGGIUNGI" onclick="Input()">
+    </form>
+    <br>
+    <form id="numeri">
+        <input type="button" value="CALCOLA" onclick="calcola()"><br><br>
+    </form>
+    <a href="Es 1 con parametri.html">Pulisci i campi</a>
+</body>
+</html>

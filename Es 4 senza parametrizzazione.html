@@ -1,0 +1,49 @@
+<!-- Inserisci in una pagina web le immagini di 6 prodotti di largo consumo. 
+Quando l'utente passa con il mouse sopra un'immagine, vengono mostrati il nome ed il prezzo del prodotto. 
+Effettuare il controllo input. -->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+        <meta charset="UTF-8">
+        <title>Immagini di prodotti</title>
+</head>
+<script>
+    function passaggiomouse(numeroFoto){
+            var idImmagine = "immagine" + numeroFoto;
+            switch(numeroFoto){
+            case 1:
+                 document.getElementById(idImmagine).title = "Pasta; Euro:2";
+            break;
+
+            case 2:
+                 document.getElementById(idImmagine).title = "Pizza; Euro:6";
+            break;
+
+            case 3:
+                 document.getElementById(idImmagine).title = "Lasagne; Euro:10";
+            break;
+
+            case 4:
+                 document.getElementById(idImmagine).title = "Coca-cola; Euro:2";
+            break;
+
+            case 5:
+                document.getElementById(idImmagine).title = "Salame; Euro:1";
+            break;
+
+            case 6:
+                document.getElementById(idImmagine).title = "Vino; Euro:15";
+            break;
+            }
+       }
+</script>
+<body>
+        <h1>Immagini prodotti alimentari</h1>
+        <img src="pasta.jpeg" height="130px" widht="130px" alt="Pasta Euro:2" onmouseover="passaggiomouse(1)" id="immagine1">
+        <img src="pizza.jpg" height="130px" widht="130px" alt="Pizza Euro:6" onmouseover="passaggiomouse(2)" id="immagine2">
+        <img src="lasagne.jpg" height="130px" widht="130px" alt="Lasagne Euro:10" onmouseover="passaggiomouse(3)" id="immagine3">
+        <img src="cocacola.jpeg" height="130px" widht="130px" alt="Coca-cola Euro:2" onmouseover="passaggiomouse(4)" id="immagine4">
+        <img src="salame.jpg" height="130px" widht="130px" alt="Salame Euro:1" onmouseover="passaggiomouse(5)" id="immagine5">
+        <img src="vino.jpg" height="130px" widht="130px" alt="Vino Euro:15" onmouseover="passaggiomouse(6)" id="immagine6">
+</body>
+</html>
